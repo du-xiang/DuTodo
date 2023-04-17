@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+  }
+ 
+  /* 创建上半部分三个相等的列 */
+  .container_column_up {
+    float: left;
+    width: 33.33%;
+    height: 350px;
+    overflow: auto;
+    padding: 10px;
+    text-indent: 30px;
+  }
+
+    /* 创建下半部分两个相等的列 */
+    .container_column_down {
+      float: left;
+      width: 50%;
+      height: 350px;
+      overflow: auto;
+      padding: 10px;
+      text-indent: 30px;
+    }
+   
+  /* 列后清除浮动 */
+  .container_row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+   
+  /* 响应式布局 - 小于 600 px 时改为上下布局 */
+  @media screen and (max-width: 600px) {
+    .container_column_up {
+      width: 100%;
+    }
+    .container_column_down {
+      width: 100%;
+    }
+  }
