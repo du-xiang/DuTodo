@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.box_wide {
+  flex: 1 0 60%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  height: calc(50vh - 40px); /* 减去上下padding的影响 */
+}
+
+.box_narrow {
+  flex: 1 0 30%;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  height: calc(50vh - 40px); /* 减去上下padding的影响 */
+}
+
+.backdrop_lines {
+  background-image: linear-gradient(0deg,#fff 48.08%,#eaecef 0,#eaecef 50%,#fff 0,#fff 98.08%,#eaecef 0,#eaecef);
+  background-size: 52px 52px;
+  height: calc(100% - 23px);
+}
+
+@media screen and (max-width: 600px) {
+  .box_wide {
+      flex: 1 0 100%;
+      height: auto; /* 在手机端取消固定高度，以便内容自适应 */
+  }
+
+  .box_narrow {
+      flex: 1 0 100%;
+      height: auto; /* 在手机端取消固定高度，以便内容自适应 */
+  }
+}
