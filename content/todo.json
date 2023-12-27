@@ -1,0 +1,15 @@
+{
+    "isNotCompleted": [
+        {"content" : "blog"},
+        {"content" : "去看海"},
+        {"content" : "去爬山"},
+        {"content" : "练字"},
+        {"content" : "设计笔记软件"},
+        {"content" : "latex学习"},
+        {"content" : "llm聊天辅助"}
+    ],
+
+    "isCompleted" : [
+
+    ]
+}
