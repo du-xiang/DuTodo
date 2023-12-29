@@ -82,18 +82,48 @@
     </div>
 <script>
     document.getElementById('loginForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // 阻止表单默认提交行为
+        // 阻止表单默认提交行为
+        event.preventDefault(); 
 
-        // 模拟登录成功，实际中你需要发送请求到后端进行验证
-        const loginSuccessful = true;
+        // 后端 URL 地址
+        const backendURL = "http://localhost/cgi-bin/login.cgi"
 
-        if (loginSuccessful) {
-            // 用户登录成功，重定向到主界面
-            window.location.href = 'index.html';
-        } else {
-            // 处理登录失败的逻辑
-            alert('Login failed. Please check your credentials.');
-        }
+        loginSuccessful = false;
+
+        // 使用 FormData 获取表单数据
+        const formData = new FormData(event.target);
+
+        // 构建一个简单的对象，包含表单中的数据
+        const formDataObject = {};
+        formData.forEach((value, key) => {
+            formDataObject[key] = value;
+        });
+
+        fetch(backendURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataObject)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 在这里处理从服务器返回的数据
+            loginSuccessful = true;
+            
+            // 页面重定向
+            if (loginSuccessful) {
+                // 用户登录成功，重定向到主界面
+                window.location.href = 'index.html';
+            } else {
+                // 处理登录失败的逻辑
+                alert('Login failed. Please check your credentials.');
+            }
+        })
+        .catch(error => {
+            // 在这里处理错误
+            console.error('Error during fetch:', error);
+        });
     });
 </script>
 
